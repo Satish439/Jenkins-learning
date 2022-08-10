@@ -1,22 +1,16 @@
 pipeline{
- agent {
-   node{
-    label 'workstation'
-   }
- }
-  environment{
-    SSH=credentials('SSH')
-   }
-  parameters {
-    string(name: 'COMPONENT', defaultValue:'', descrition: )
+ agent any
 
-  }
-  stages{
-    stage('Ansible palybook'){
-      steps{
-        sh
-        HOST=$(echo ${COMPONENT} | tr [:lower])
-      }
+  stage('Test1'){
+    steps{
+      echo 'Test1'
     }
   }
-}
+
+  stage('Test2'){
+    steps{
+      echo 'Test2'
+    }
+  }
+
+ }
