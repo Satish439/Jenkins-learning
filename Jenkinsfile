@@ -1,16 +1,20 @@
-pipeline{
- agent any
+pipeline {
+  agent any
 
-  stage('Test1'){
-    steps{
-      echo 'Test1'
-    }
-  }
+  stages {
 
-  stage('Test2'){
-    steps{
-      echo 'Test2'
+    stage('TEST1') {
+      steps {
+        echo 'Test1'
+     }
     }
-  }
+
+   stage('TEST2') {
+      steps {
+        echo 'Test2'
+//        emailext body: 'TEST', subject: 'TEST', to: 'raghu@local.com'
+//        build job: 'roboshop-ansible', parameters: [string(name: 'COMPONENT', value: 'frontend')]
+      }
+    }
 
  }
