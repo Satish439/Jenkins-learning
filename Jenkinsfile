@@ -1,26 +1,24 @@
 pipeline{
-  agent any
-  envirnoment{
-    SAMPLE_URL="google.com
+
+  agent{
+    node{
+      lable 'workstation'
+    }
   }
-   parameters {
-          string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-
-          text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-
-          booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-          choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-          password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 }
 
-  stages{
-   stage('one'){
-     steps{
-       sh 'echo URL = ${SAMPLE_URL}'
-       echo SAMPLE_URL
-     }
+ environment{
+    SSH=credentials('SSH')
+ }
+
+ parameters{
+   string(name: 'COMPONENT', defaultvalue: '', description: 'which Component to run the piprline')
+
+ }
+
+ stages{
+   stage('ansible playbook'){
+     sh '''
+     HOST=$(echo ${COMPONENT} | tr [:lower:] [:upper:])
    }
-  }
-}
+ }
