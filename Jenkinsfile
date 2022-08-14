@@ -1,20 +1,16 @@
-pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                //
-            }
-        }
-        stage('Test') {
-            steps {
-                //
-            }
-        }
-        stage('Deploy') {
-            steps {
-                //
-            }
-        }
-    }
+pipeline{
+  agent any
+  "
+  envirnoment{
+    SAMPLE_URL="google.com
+  }
+  stages{
+   stage?
+   ('one'){
+     steps{
+       sh 'echo URL = ${SAMPLE_URL}'
+       echo SAMPLE_URL
+     }
+   }
+  }
 }
