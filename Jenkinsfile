@@ -39,9 +39,9 @@ parameters {
              stage("one") {
                steps {
                  sh echo $'{SAMPLE_URL}'
-                  echo SAMPLE_URL
-                  echo SSH
-                  echo PERSON
+                  echo 'SAMPLE_URL'
+                  echo 'SSH'
+                  echo 'PERSON'
                }
              }
            }
