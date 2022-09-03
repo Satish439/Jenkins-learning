@@ -12,6 +12,27 @@
 //    }
 //   } */
 
+//to take the input(approval) from user to proceed with job in middle sometimes
+
+// pipeline {
+//     agent any
+//     stages {
+//         stage('Example') {
+//             input {
+//                 message "Should we continue?"
+//                 ok "Yes, we should."
+//                 submitter "admin"
+//                 parameters {
+//                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+//                 }
+//             }
+//             steps {
+//                 echo "Hello, ${PERSON}, nice to meet you."
+//             }
+//         }
+//     }
+// }
+
 
 pipeline {
  agent any
@@ -33,7 +54,6 @@ pipeline {
    password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
  }
 
- triggers { pollSCM('* * * * *') }
 
  stages {
 
@@ -47,4 +67,44 @@ pipeline {
    }
 
  }
+}
+
+// to the stages parallel//
+
+pipeline {
+  agent any
+   stages {
+     stage('S1') {
+       steps {
+         echo 's1'
+      }
+     }
+     stage('s2') {
+       steps {
+         echo 's2'
+       }
+     }
+     stage('Parallel Stages') {
+       parallel {
+         stage('p1') {
+           steps {
+             sh 'sleep120'
+             echo 'p1'
+           }
+         }
+     stage('p2') {
+       steps{
+         echo 'p2'
+         sh 'sleep120'
+       }
+     }
+     stage('p3') {
+       steps {
+        sh 'sleep120'
+        echo 'p3'
+       }
+     }
+       }
+     }
+   }
 }
