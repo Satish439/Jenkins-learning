@@ -118,4 +118,6 @@
 log.info 'Starting'
 log.warning 'Nothing to do!'
 
+COMPONENT = 'cart'
+
 log()
