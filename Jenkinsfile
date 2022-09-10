@@ -71,43 +71,49 @@
 
 // to the stages parallel//
 
-pipeline {
-  agent any
-   stages {
-     stage('S1') {
-       steps {
-         echo 's1'
-      }
-     }
-     stage('s2') {
-       steps {
-         echo 's2'
-       }
-     }
-     stage('Parallel Stages') {
-       when {
-         branch 'main'
-       }
-       parallel {
-         stage('p1') {
-           steps {
-             sh 'sleep120'
-             echo 'p1'
-           }
-         }
-     stage('p2') {
-       steps{
-         echo 'p2'
-         sh 'sleep120'
-       }
-     }
-     stage('p3') {
-       steps {
-        sh 'sleep120'
-        echo 'p3'
-       }
-     }
-       }
-     }
-   }
-}
+// pipeline {
+//   agent any
+//    stages {
+//      stage('S1') {
+//        steps {
+//          echo 's1'
+//       }
+//      }
+//      stage('s2') {
+//        steps {
+//          echo 's2'
+//        }
+//      }
+//      stage('Parallel Stages') {
+//        when {
+//          branch 'main'
+//        }
+//        parallel {
+//          stage('p1') {
+//            steps {
+//              sh 'sleep120'
+//              echo 'p1'
+//            }
+//          }
+//      stage('p2') {
+//        steps{
+//          echo 'p2'
+//          sh 'sleep120'
+//        }
+//      }
+//      stage('p3') {
+//        steps {
+//         sh 'sleep120'
+//         echo 'p3'
+//        }
+//      }
+//        }
+//      }
+//    }
+// }
+
+
+@Library('roboshop-jenkins-shared-library') _
+
+log.info 'Starting'
+log.warning 'Nothing to do!'
