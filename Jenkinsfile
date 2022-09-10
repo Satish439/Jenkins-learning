@@ -118,6 +118,6 @@
 log.info 'Starting'
 log.warning 'Nothing to do!'
 
-env.COMPONENT = 'cart'
+COMPONENT = 'cart'
 
 log()
